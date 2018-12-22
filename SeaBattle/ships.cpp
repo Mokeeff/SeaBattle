@@ -1,12 +1,5 @@
 #include "ships.h"
 
-int toIntCoor(qreal C){
-    int I;
-    C = floor(C);
-    I = C / 1;
-    return I;
-}
-
 Ships::Ships(QObject *parent) : QObject(parent), QGraphicsItem()
 {
 
@@ -37,7 +30,7 @@ void Ships::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     QPointF point = mapToScene(event->pos());
     if(point.y() >= (0 + (heigth / 2)) && point.x() >= (0 + (width / 2))
-            && point.y() <= (390 - (heigth / 2)) && point.x() <= (340 - (width / 2))){
+            && point.y() <= (340 - (heigth / 2)) && point.x() <= (390 - (width / 2))){
         if(point.y() >= 40 && point.y() < 60 + (heigth / 2)){
             point.setY(60 + (heigth / 2));
         }
@@ -63,8 +56,8 @@ void Ships::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             qreal x = point.x() / 20; qreal y = point.y() / 20;
             x = floor(x); y = floor(y);
             x = x * 20; y = y * 20;
-            point.setY(y + centreY);
             point.setX(x + centreX);
+            point.setY(y + centreY);
             this->setPos(point);
             this->infield = true;
         }
@@ -77,56 +70,12 @@ void Ships::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 void Ships::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    /*QPointF point = mapToScene(event->pos());
-    if(infield == true){
-        int lengthX = heigth / 20;
-        int lengthY = width / 20;
-        int x = toIntCoor(point.x() / 20) - 2;
-        int y = toIntCoor(point.y() / 20) - 2;
-        x = x - 2;
-        y = y - 2;
-        if(horiz == true){
-            if(lengthX == 4){ x = x - 2;}
-            if(lengthX == 3 || lengthX == 2){ x = x - 1;}
-        }
-        else{
-            if(lengthY == 4){ y = y - 2;}
-            if(lengthY == 3 || lengthY == 2){ y = y - 1;}
-        }
-        for(int i = 0; i < lengthX; i++){
-            for(int j = 0; j <lengthY; j++){
-                p.field[x + i][y + j] = 0;
-            }
-        }
-    }*/
     this->setCursor(QCursor(Qt::ClosedHandCursor));
     Q_UNUSED(event);
 }
 
 void Ships::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-   /*QPointF point = mapToScene(event->pos());
-    if(infield == true){
-        int lengthX = heigth / 20;
-        int lengthY = width / 20;
-        int x = toIntCoor(point.x() / 20) - 2;
-        int y = toIntCoor(point.y() / 20) - 2;
-        x = x - 2;
-        y = y - 2;
-        if(horiz == true){
-            if(lengthX == 4){ x = x - 2;}
-            if(lengthX == 3 || lengthX == 2){ x = x - 1;}
-        }
-        else{
-            if(lengthY == 4){ y = y - 2;}
-            if(lengthY == 3 || lengthY == 2){ y = y - 1;}
-        }
-        for(int i = 0; i < lengthX; i++){
-            for(int j = 0; j <lengthY; j++){
-                p.field[x + i][y + j] = type;
-            }
-        }
-    }*/
     this->setCursor(QCursor(Qt::ArrowCursor));
     Q_UNUSED(event);
 }

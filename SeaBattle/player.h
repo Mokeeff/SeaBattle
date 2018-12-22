@@ -10,9 +10,9 @@ public:
     int single, two, three, four;
     int field[10][10];
     bool ready;
-    void start();
-    bool near_cells(int x, int y, int type);
-    bool check_field();
+    void nulling();
+    void nullingfield();
+    bool near_cells(int x, int y, int type, bool horiz);
 };
 
 #endif // PLAYER_H

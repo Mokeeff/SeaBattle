@@ -21,9 +21,7 @@ bool Player::near_cells(int x, int y, int length, bool horiz){
     if(horiz == true){ px = 1;}
     else{ py = 1; }
     for(int i10 = 1; i10 <= length; i10++){
-        if(field[x][y] != 0){
-            return false;
-        }
+        if(field[x][y] != 0){ return false; }
         for(int k2 = -1; k2 <= 1; k2++){
             for(int j2 = -1; j2 <= 1; j2++){
                 if (k2 !=0 || j2 != 0){

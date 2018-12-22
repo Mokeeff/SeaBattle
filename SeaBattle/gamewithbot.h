@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QGraphicsScene>
-#include <QGraphicsTextItem>
 #include <QFont>
 #include <QMessageBox>
 #include <QVector>
@@ -27,9 +26,9 @@ class GameWithBot : public QWidget
 public:
     explicit GameWithBot(QWidget *parent = nullptr);
     ~GameWithBot();
-    Ships s;
     Player p;
-    QVector <Ships> player_ships;
+    QVector <Ships*> player_ships;
+    QPointF beginfield;
 
 
 private slots:

@@ -13,10 +13,9 @@ class Field : public QObject, public QGraphicsItem
     Q_OBJECT
 
 public:
-    explicit Field(QObject *parent = nullptr);
-    ~Field();
+    /*explicit Field(QObject *parent = nullptr);
+    ~Field();*/
     bool name;
-    char simvol;
 signals:
 
 private:
