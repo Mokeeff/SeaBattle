@@ -18,7 +18,7 @@ GameWithBot::GameWithBot(QWidget *parent) :
     this->setFixedSize(524,400);
     scene = new QGraphicsScene(this);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
-    ui->graphicsView->resize(400,350);
+    ui->graphicsView->resize(600,290);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui->graphicsView->setCacheMode(QGraphicsView::CacheBackground);
@@ -36,6 +36,7 @@ GameWithBot::GameWithBot(QWidget *parent) :
             field->setPos(50 + (CELL_SIZE * i), 50 + (CELL_SIZE * j));
             if(i == 0 || j ==0){ field->name = true; }
             else{ field->name = false; }
+            if (i !=0 || j != 0){ field->type = p.field[i-1][j-1]; }
             scene->addItem(field);
             if (i == 1 && j == 1){ beginfield = field->pos(); }
             if(field->name == true){
@@ -89,7 +90,7 @@ void GameWithBot::on_Next_clicked()
         }
         if(error == true){ QMessageBox::warning(this, "Error", "All ships must be in the field!!!"); }
         else {
-            for(int i = 0; i < player_ships.length(); i ++){
+            for(int i = 0; i < 10; i++){
                 QPointF point = player_ships[i]->pos();
                 point = point - beginfield;
                 qreal x = point.x();
@@ -112,12 +113,11 @@ void GameWithBot::on_Next_clicked()
                 y1 = y1 / 20;
                 if (p.near_cells(x1, y1, player_ships[i]->type, player_ships[i]->horiz) == true){
                     if(player_ships[i]->horiz == true){
-                        for(int j = 0; j < lengthX; j++){
-                            p.field[x1 + j][y1] = player_ships[i]->type;
-                        }
+                        for(int j = 0; j < lengthX / 20; j++){
+                            p.field[x1 + j][y1] = player_ships[i]->type; }
                     }
                     else{
-                        for(int j = 0; j < lengthY; j++){
+                        for(int j = 0; j < lengthY / 20; j++){
                             p.field[x1][y1 + j] = player_ships[i]->type;
                         }
                     }
@@ -128,6 +128,10 @@ void GameWithBot::on_Next_clicked()
                     break;
                 }
             }
+            this->hide();
+            BattleField *form = new BattleField();
+            form->show();
+            form->player = p;
         }
     }
     else{ QMessageBox::warning(this, "Error", "Use all ships!!!"); }

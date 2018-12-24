@@ -10,9 +10,10 @@
 #include <ships.h>
 #include <field.h>
 #include <player.h>
+#include <battlefield.h>
+#include <bot.h>
 
 #define CELL_SIZE 20
-
 #define FIELD_SIZE 11
 
 namespace Ui {
@@ -29,7 +30,6 @@ public:
     Player p;
     QVector <Ships*> player_ships;
     QPointF beginfield;
-
 
 private slots:
     void on_Next_clicked();

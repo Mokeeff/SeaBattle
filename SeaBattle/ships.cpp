@@ -15,17 +15,6 @@ QRectF Ships::boundingRect() const
     return QRectF ( - width / 2 , - heigth / 2, width, heigth);
 }
 
-void Ships::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
-{
-    QColor color = QColor(0, 0, 0);
-    painter->setPen(color);
-    color = QColor(211, 211, 211);
-    painter->setBrush(color);
-    painter->drawRect( - width / 2 , - heigth / 2, width, heigth);
-    Q_UNUSED(option);
-    Q_UNUSED(widget);
-}
-
 void Ships::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     QPointF point = mapToScene(event->pos());
@@ -66,6 +55,17 @@ void Ships::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
             this->infield = false;
         }
     }
+}
+
+void Ships::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    QColor color = QColor(0, 0, 0);
+    painter->setPen(color);
+    color = QColor(211, 211, 211);
+    painter->setBrush(color);
+    painter->drawRect( - width / 2 , - heigth / 2, width, heigth);
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
 }
 
 void Ships::mousePressEvent(QGraphicsSceneMouseEvent *event)

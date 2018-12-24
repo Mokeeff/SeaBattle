@@ -6,6 +6,7 @@
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
 
+
 #define CELL_SIZE 20
 
 class Field : public QObject, public QGraphicsItem
@@ -13,9 +14,8 @@ class Field : public QObject, public QGraphicsItem
     Q_OBJECT
 
 public:
-    /*explicit Field(QObject *parent = nullptr);
-    ~Field();*/
-    bool name;
+    bool name; bool ally;
+    int type;
 signals:
 
 private:

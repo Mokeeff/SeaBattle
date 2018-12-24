@@ -30,18 +30,25 @@ SOURCES += \
     gamewithbot.cpp \
     ships.cpp \
     field.cpp \
-    player.cpp
+    player.cpp \
+    battlefield.cpp \
+    bot.cpp \
+    graphicsscene.cpp
 
 HEADERS += \
         mainform.h \
     gamewithbot.h \
     ships.h \
     field.h \
-    player.h
+    player.h \
+    battlefield.h \
+    bot.h \
+    graphicsscene.h
 
 FORMS += \
         mainform.ui \
-    gamewithbot.ui
+    gamewithbot.ui \
+    battlefield.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
